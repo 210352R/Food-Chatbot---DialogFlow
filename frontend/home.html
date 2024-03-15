@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Add CSS for close button */
+      .open-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        z-index: 9999; /* Ensure it's above the iframe */
+      }
+
+      /* Add CSS for the toggle div */
+      #toggle-div {
+        display: none; /* Initially hidden */
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 200px;
+        color: white;
+      }
+      #chatbot-iframe {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a href="#home">HOME</a> | <a href="#menu">MENU</a> |
+          <a href="#location">LOCATION</a> | <a href="#aboutus">ABOUT US</a> |
+          <a href="#contactus">CONTACT US</a>
+        </nav>
+      </header>
+
+      <section id="home">
+        <img src="banner.jpg" />
+        <!-- Add images here -->
+      </section>
+
+      <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="grid-container">
+          <img src="menu1.jpg" alt="Menu item 1" />
+          <img src="menu2.jpg" alt="Menu item 2" />
+          <img src="menu3.jpg" alt="Menu item 3" />
+        </div>
+      </section>
+
+      <section id="location">
+        <h2>Location</h2>
+        <p>38 Patli Gali, Mumbai</p>
+        <!-- Add map widget here -->
+      </section>
+
+      <section id="contactus">
+        <h2>Contact Us</h2>
+        <p>
+          Got questions? Want to place an order? Call us at +91791234567 or
+          email us at info@atliqfastfood.com
+        </p>
+      </section>
+
+      <!-- Change button text based on chatbot display state -->
+      <button class="open-button" onclick="toggleChatbot()">
+        Open Chatbot
+      </button>
+
+      <div id="chatbot-iframe" class="chat-bot">
+        <iframe
+          class="chat-bot"
+          width="350"
+          height="430"
+          allow="microphone;"
+          src="https://console.dialogflow.com/api-client/demo/embedded/"
+        ></iframe>
+      </div>
+
+      <script>
+        // JavaScript function to close the chatbot iframe
+        function toggleChatbot() {
+          var iframe = document.getElementById("chatbot-iframe");
+          var button = document.querySelector(".open-button");
+
+          if (iframe.style.display === "none" || iframe.style.display === "") {
+            iframe.style.display = "block"; // Show the iframe
+            button.textContent = "Close Chatbot";
+          } else {
+            iframe.style.display = "none"; // Hide the iframe
+            button.textContent = "Open Chatbot";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
